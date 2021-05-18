@@ -54,4 +54,22 @@ fn some_function<T, U>(t: &T, u: &U) -> i32
 
 ## Validating References with Lifetimes
 
+* Every reference in Rust has a _lifetime_
+  * A liftime is a scope for which that reference is valid
+* Like types lifetimes are inferred where possible, but sometimes must be explicitly stated
+* Returning parameters from methods
+  * If you have a function that may return one or another parameter passed to it (eg `longest(int,int)`) that makes it difficult for the compiler to infer the lifetime of those values, because either one could be returned.
+  * You need to add generic lifetime parameters that define the relationship between the references: `fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {`
+    * A lifetime is a generic?
+* Lifetimes are generic- just as functiosn can accept any type when using generics, functions can accept references with any lifetime by specifying a generic lifetime parameter.
+  * The important thing you're establishing is the _relationship_ between the references.
+* Specify lifetime _annotation_ like so:
+  * `&'a i32`, `&'a mut i32`
+* You aren't specifying how long a lifetime will last- only that there must be some lifetime here, and the Rust will substitute that for the shortest lifetime of those available.
+* Structs can hold references and must supply a lifetime for every reference
+* Lifetime Elision
+  * There exist _Lifetime Elision Rules_ that match particular deterministic situations where the lifetimes of a reference can be predicted
+  * In these cases you don't need to specify a lifetime
+  * How do you recognise these cases?
+* Named _Input lifetimes_ and _output lifetimes_ depending on whether they're coming in via a param or out via return value
 * 
