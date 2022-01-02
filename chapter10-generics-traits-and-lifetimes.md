@@ -61,7 +61,7 @@ fn some_function<T, U>(t: &T, u: &U) -> i32
   * If you have a function that may return one or another parameter passed to it (eg `longest(int,int)`) that makes it difficult for the compiler to infer the lifetime of those values, because either one could be returned.
   * You need to add generic lifetime parameters that define the relationship between the references: `fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {`
     * A lifetime is a generic?
-* Lifetimes are generic- just as functiosn can accept any type when using generics, functions can accept references with any lifetime by specifying a generic lifetime parameter.
+* Lifetimes are generic- just as functions can accept any type when using generics, functions can accept references with any lifetime by specifying a generic lifetime parameter.
   * The important thing you're establishing is the _relationship_ between the references.
 * Specify lifetime _annotation_ like so:
   * `&'a i32`, `&'a mut i32`
